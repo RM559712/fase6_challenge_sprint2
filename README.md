@@ -6,11 +6,11 @@
 
 <br>
 
-# Cap 1 - Despertar da rede neural
+# Enterprise Challenge - Sprint 2 - Ingredion
 
 ## 👨‍👩 Grupo
 
-Grupo de número <b>7</b> formado pelos integrantes mencionados abaixo.
+Grupo de número <b>4</b> formado pelos integrantes mencionados abaixo.
 
 ## 👨‍🎓 Integrantes: 
 - <a href="https://www.linkedin.com/in/cirohenrique/">Ciro Henrique</a> ( <i>RM559040</i> )
@@ -21,14 +21,14 @@ Grupo de número <b>7</b> formado pelos integrantes mencionados abaixo.
 ## 👩‍🏫 Professores:
 
 ### Tutor(a) 
-- <a href="https://www.linkedin.com/in/lucas-gomes-moreira-15a8452a/">Lucas Gomes Moreira</a>
+- <a href="https://www.linkedin.com/in/leonardoorabona/">Leonardo Ruiz Orabona</a>
 
 ### Coordenador(a)
 - <a href="https://www.linkedin.com/in/profandregodoi/">André Godoi</a>
 
 ## 📜 Descrição
 
-<b>Referência</b>: https://on.fiap.com.br/mod/assign/view.php?id=474700&c=12936
+<b>Referência</b>: https://on.fiap.com.br/mod/assign/view.php?id=475221&c=12936
 
 <i>Pendente...</i>
 
@@ -60,4 +60,4 @@ Esse projeto não possui parte técnica para execução.
 
 ## 📋 Licença
 
-Desenvolvido pelo Grupo 7 para o projeto da fase 6 (<i>Cap 1 - Despertar da rede neural</i>) da <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://fiap.com.br">Fiap</a>. Está licenciado sobre <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
+Desenvolvido pelo Grupo 4 para o projeto da fase 6 (<i>Enterprise Challenge - Sprint 2 - Ingredion</i>) da <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://fiap.com.br">Fiap</a>. Está licenciado sobre <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
