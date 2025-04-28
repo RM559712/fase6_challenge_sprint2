@@ -47,10 +47,12 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 5. <b>src</b>: Diretório para armazenamento de código fonte do sistema.
 
-6. <b>tests</b>: Diretório para armazenamento de resultados de testes.
+6. <b>data</b>: Diretório para armazenamento dos dados do projeto
+
+7. <b>tests</b>: Diretório para armazenamento de resultados de testes.
 	- Diretório "images": Diretório para armazenamento de imagens relacionadas aos testes efetuados.
 
-7. <b>README.md</b>: Documentação do projeto em formato markdown.
+8. <b>README.md</b>: Documentação do projeto em formato markdown.
 
 <i><strong>Importante</strong>: A estrutura de pastas foi mantida neste formato para atender ao padrão de entrega dos projetos.</i>
 
