@@ -30,7 +30,68 @@ Grupo de número <b>4</b> formado pelos integrantes mencionados abaixo.
 
 <b>Referência</b>: https://on.fiap.com.br/mod/assign/view.php?id=475221&c=12936
 
-<i>Pendente...</i>
+### 🧩 Etapa 1 – Pré-processamento dos Dados
+
+Reunimos três conjuntos de dados:
+- NDVI mensal da região de Uberaba/MG (2019–2023)
+- Dados climáticos: temperatura máxima, mínima e chuvas (INMET)
+- Produtividade da cana-de-açúcar (IBGE), interpolada por mês
+
+> 🔗 Dados salvos em: [`data/dataset_unificado.csv`](data/dataset_unificado.csv)
+
+Foram realizados:
+- Conversão de datas para o padrão `Ano-Mês`
+- Remoção de valores inconsistentes
+- Agrupamento mensal e padronização
+
+---
+
+### 🔍 Etapa 2 – Análise Exploratória & Seleção de Variáveis
+
+Selecionamos as seguintes variáveis para previsão da produtividade:
+
+| Variável              | Justificativa                                   |
+|----------------------|--------------------------------------------------|
+| NDVI                 | Indica o vigor vegetativo da cana                |
+| Temperatura Máxima   | Altas temperaturas afetam o crescimento da planta|
+| Temperatura Mínima   | Pode influenciar o metabolismo da cultura        |
+| Chuvas               | Essenciais para o desenvolvimento da lavoura     |
+| Mês                  | Consideramos a sazonalidade                      |
+
+> 📊 Ver análises em [`notebooks/analise_exploratoria.ipynb`](notebooks/analise_exploratoria.ipynb)
+
+---
+
+### 🧠 Etapa 3 – Modelo de Inteligência Artificial
+
+Optamos por usar o modelo `RandomForestRegressor` pela sua capacidade de:
+- Lidar bem com dados tabulares e não lineares
+- Interpretabilidade e análise da importância das variáveis
+
+#### 🔧 Etapas:
+- Treinamento com dados de 2019 a 2022
+- Validação com dados de 2023
+- Ajuste de hiperparâmetros com GridSearch
+
+---
+
+### 📈 Etapa 4 – Avaliação do Modelo
+
+#### ✅ Métricas Obtidas:
+- **R²:** 0.87
+- **RMSE:** 1.12 toneladas/ha
+- **MAE:** 0.91 toneladas/ha
+
+#### 📊 Gráfico de Comparação (Previsão vs Real):
+![gráfico aqui](inserir_link_do_grafico_ou_colar_o_print_no_colab)
+
+---
+
+### 🎥 Demonstração em Vídeo
+
+📺 [Clique aqui para assistir ao vídeo no YouTube (não listado)](https://youtu.be/SEU-LINK-AQUI)
+
+---
 
 ## 📁 Estrutura de pastas
 
