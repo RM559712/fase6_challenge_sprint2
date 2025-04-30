@@ -44,6 +44,8 @@ Foram realizados:
 - Remoção de valores inconsistentes
 - Agrupamento mensal e padronização
 
+Mais informações clicando [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ACTIVITIES.md) e [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ETAPA1_SPRINT2.md).
+
 ---
 
 ### 🔍 Etapa 2 – Análise Exploratória & Seleção de Variáveis
@@ -60,6 +62,7 @@ Selecionamos as seguintes variáveis para previsão da produtividade:
 
 > 📊 Ver análises em [`scripts/analise_exploratoria.ipynb`](scripts/analise_exploratoria.ipynb)
 
+Mais informações clicando [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ETAPA2_SPRINT2.md)
 
 ---
 
@@ -74,6 +77,8 @@ Optamos por usar o modelo `RandomForestRegressor` pela sua capacidade de:
 - Validação com dados de 2023
 - Ajuste de hiperparâmetros com GridSearch
 
+Mais informações clicando [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ETAPA3_SPRINT2.md)
+
 ---
 
 ### 📈 Etapa 4 – Avaliação do Modelo
@@ -83,14 +88,13 @@ Optamos por usar o modelo `RandomForestRegressor` pela sua capacidade de:
 - **RMSE:** 1.12 toneladas/ha
 - **MAE:** 0.91 toneladas/ha
 
-#### 📊 Gráfico de Comparação (Previsão vs Real):
-![gráfico aqui](inserir_link_do_grafico_ou_colar_o_print_no_colab)
+Mais informações clicando [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ETAPA4_SPRINT2.md)
 
 ---
 
 ### 🎥 Demonstração em Vídeo
 
-📺 [Clique aqui para assistir ao vídeo no YouTube (não listado)](https://youtu.be/SEU-LINK-AQUI)
+📺 A execução de todo o processo também pode ser visualizada através de um vídeo clicando [aqui](https://www.youtube.com/watch?v=[PENDENTE]).
 
 ---
 
