@@ -1,10 +1,14 @@
-# svr_treinamento.py
+# svr_treinamento_gpu.py
 # Diretório recomendado: scripts/
 
 """
 Script alternativo de treinamento utilizando o modelo SVR (Support Vector Regression)
 para previsão da produtividade da cana-de-açúcar. Utiliza os dados unificados do diretório ../data/
 e salva os gráficos de resultado no diretório ../tests/images/
+
+Este modelo foi escolhido após testes comparativos com o XGBoost, pois apresentou desempenho
+melhor nos dados disponíveis. O SVR é indicado para bases pequenas e com pouca variabilidade,
+o que se alinha ao cenário do projeto.
 """
 
 # ============================================================
@@ -12,11 +16,12 @@ e salva os gráficos de resultado no diretório ../tests/images/
 # ============================================================
 import os
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVR
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, accuracy_score
 from sklearn.preprocessing import StandardScaler
 
 # ============================================================
@@ -80,3 +85,41 @@ plt.grid(True)
 plt.tight_layout()
 plt.savefig('../tests/images/svr_real_vs_prevista.png')
 plt.show()
+
+# ============================================================
+# 7. Gráfico de Resíduos
+# ============================================================
+residuos = y_test - y_pred
+plt.figure(figsize=(10,4))
+plt.scatter(y_test, residuos, alpha=0.7, color='orange')
+plt.axhline(0, linestyle='--', color='gray')
+plt.title('Resíduos do Modelo SVR')
+plt.xlabel('Produtividade Real (ton/ha)')
+plt.ylabel('Erro (Resíduo)')
+plt.grid(True)
+plt.tight_layout()
+plt.savefig('../tests/images/svr_residuos.png')
+plt.show()
+
+# ============================================================
+# 8. Maiores Erros Absolutos
+# ============================================================
+df_resultado = pd.DataFrame({
+    'Produtividade Real': y_test.values,
+    'Produtividade Prevista': y_pred
+})
+df_resultado['Erro Absoluto'] = abs(df_resultado['Produtividade Real'] - df_resultado['Produtividade Prevista'])
+print("\n🔎 Top 3 maiores erros absolutos:")
+print(df_resultado.sort_values(by='Erro Absoluto', ascending=False).head(3))
+
+# ============================================================
+# 9. Exportação das Métricas
+# ============================================================
+df_metricas = pd.DataFrame([{
+    'Modelo': 'SVR RBF',
+    'MAE': mae,
+    'MSE': mse,
+    'R2': r2
+}])
+df_metricas.to_csv('../tests/svr_metricas.csv', index=False)
+print("\n✅ Métricas do modelo SVR exportadas para ../tests/svr_metricas.csv")

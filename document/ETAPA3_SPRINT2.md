@@ -57,3 +57,35 @@ y = df['Produtividade (ton/ha)']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 
+## 📊 Comparativo entre Modelos: XGBoost vs SVR
+
+Testamos dois algoritmos para prever a produtividade da cana-de-açúcar:
+
+| Modelo     | MAE (ton/ha) | MSE | R² (Coef. Determinação) |
+|------------|--------------|-----|--------------------------|
+| XGBoost GPU| 1.22         | 2.08| **-0.53**                |
+| SVR (RBF)  | **1.08**     | **1.37** | **-0.01**           |
+
+✅ **O modelo SVR apresentou melhor desempenho** geral, com menor erro absoluto e quadrático.  
+📉 O R² ainda está abaixo de zero, indicando que o modelo não generaliza bem, mas é **muito superior ao XGBoost neste cenário de poucos dados com baixa variação**.
+
+---
+
+### 🎯 Justificativa da Escolha do SVR
+
+O **SVR com kernel RBF** foi escolhido por sua capacidade de lidar com:
+
+- Pequenas bases de dados;
+- Relações não lineares entre as variáveis climáticas e a produtividade;
+- Robustez contra overfitting em datasets com pouca variabilidade.
+
+Além disso, o uso de `StandardScaler` para normalização das variáveis foi essencial para que o SVR tivesse bom desempenho.
+
+---
+
+### 📈 Visualizações
+
+- **Gráfico Real vs Previsto (SVR)**: mostra boa tendência de ajuste mesmo com dados limitados.
+- Arquivo salvo: `../tests/images/svr_real_vs_prevista.png`
+
+
