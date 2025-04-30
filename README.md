@@ -94,7 +94,7 @@ Mais informações, clique [aqui](https://github.com/RM559712/fase6_challenge_sp
 
 ### 🎥 Demonstração em Vídeo
 
-📺 A execução de todo o processo também pode ser visualizada através de um vídeo clicando [aqui](https://www.youtube.com/watch?v=[PENDENTE]).
+📺 A execução de todo o processo também pode ser visualizada através de um vídeo clicando [aqui](https://www.youtube.com/watch?v=exmnrODzQac).
 
 ---
 
