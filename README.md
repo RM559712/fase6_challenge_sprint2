@@ -44,7 +44,7 @@ Foram realizados:
 - Remoção de valores inconsistentes
 - Agrupamento mensal e padronização
 
-Mais informações clicando [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ACTIVITIES.md) e [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ETAPA1_SPRINT2.md).
+Mais informações, clique [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ACTIVITIES.md) e [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ETAPA1_SPRINT2.md).
 
 ---
 
@@ -62,7 +62,7 @@ Selecionamos as seguintes variáveis para previsão da produtividade:
 
 > 📊 Ver análises em [`scripts/analise_exploratoria.ipynb`](scripts/analise_exploratoria.ipynb)
 
-Mais informações clicando [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ETAPA2_SPRINT2.md)
+Mais informações, clique [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ETAPA2_SPRINT2.md)
 
 ---
 
@@ -77,7 +77,7 @@ Optamos por usar o modelo `RandomForestRegressor` pela sua capacidade de:
 - Validação com dados de 2023
 - Ajuste de hiperparâmetros com GridSearch
 
-Mais informações clicando [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ETAPA3_SPRINT2.md)
+Mais informações, clique [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ETAPA3_SPRINT2.md)
 
 ---
 
@@ -88,7 +88,7 @@ Mais informações clicando [aqui](https://github.com/RM559712/fase6_challenge_s
 - **RMSE:** 1.12 toneladas/ha
 - **MAE:** 0.91 toneladas/ha
 
-Mais informações clicando [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ETAPA4_SPRINT2.md)
+Mais informações, clique [aqui](https://github.com/RM559712/fase6_challenge_sprint2/blob/main/document/ETAPA4_SPRINT2.md)
 
 ---
 
