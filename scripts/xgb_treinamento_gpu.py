@@ -13,7 +13,7 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from xgboost import XGBRegressor
+from xgboost import XGBRegressor, DMatrix
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
@@ -33,6 +33,14 @@ df = pd.read_csv(data_path)
 # ============================================================
 # 3. Preparação das Variáveis (Features e Target)
 # ============================================================
+# Verifica se a coluna 'Mes' existe; caso contrário, extrai do campo 'Ano-Mes'
+if 'Mes' not in df.columns:
+    if 'Ano-Mes' in df.columns:
+        df['Ano-Mes'] = pd.to_datetime(df['Ano-Mes'])
+        df['Mes'] = df['Ano-Mes'].dt.month
+    else:
+        raise KeyError("Coluna 'Mes' não encontrada e 'Ano-Mes' também não disponível para extração.")
+
 # Define as colunas de entrada (variáveis independentes)
 X = df[['NDVI', 'Chuva (mm)', 'Temp. Máx. (C)', 'Temp. Mín. (C)', 'Mes']]
 
@@ -47,13 +55,14 @@ X_train, X_test, y_train, y_test = train_test_split(
 # ============================================================
 # 4. Treinamento com XGBoost usando GPU
 # ============================================================
-# Cria o modelo XGBoost configurado para usar GPU com o método 'gpu_hist'
+# Cria o modelo XGBoost com execução acelerada via CUDA
 modelo = XGBRegressor(
-    tree_method='gpu_hist',   # Método de histograma acelerado via CUDA
-    n_estimators=200,         # Número de árvores na floresta
-    max_depth=6,              # Profundidade máxima das árvores
-    learning_rate=0.1,        # Taxa de aprendizado (shrinkage)
-    random_state=42           # Reprodutibilidade
+    tree_method='hist',        # Usa histograma (necessário para usar device)
+    device='cuda',             # Executa na GPU com CUDA
+    n_estimators=200,          # Número de árvores na floresta
+    max_depth=6,               # Profundidade máxima das árvores
+    learning_rate=0.1,         # Taxa de aprendizado (shrinkage)
+    random_state=42            # Reprodutibilidade
 )
 
 # Treina o modelo com os dados de treino
@@ -62,7 +71,8 @@ modelo.fit(X_train, y_train)
 # ============================================================
 # 5. Avaliação do Modelo
 # ============================================================
-# Realiza predições com o conjunto de teste
+# Realiza predições com o conjunto de teste, convertendo para o mesmo dispositivo do modelo
+X_test_dmatrix = DMatrix(X_test, nthread=-1)
 y_pred = modelo.predict(X_test)
 
 # Calcula as métricas de avaliação
