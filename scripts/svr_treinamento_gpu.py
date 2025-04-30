@@ -19,9 +19,9 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.svm import SVR
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score, accuracy_score
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.preprocessing import StandardScaler
 
 # ============================================================
@@ -43,7 +43,12 @@ if 'Mes' not in df.columns:
     else:
         raise KeyError("Coluna 'Mes' não encontrada e 'Ano-Mes' também não disponível para extração.")
 
-X = df[['NDVI', 'Chuva (mm)', 'Temp. Máx. (C)', 'Temp. Mín. (C)', 'Mes']]
+# Criação de novas features derivadas simples
+# Diferença térmica e índice climático (chuva sobre soma de temperaturas)
+df['Temp_Diff'] = df['Temp. Máx. (C)'] - df['Temp. Mín. (C)']
+df['Indice_Climatico'] = df['Chuva (mm)'] / (df['Temp. Máx. (C)'] + 1)
+
+X = df[['NDVI', 'Chuva (mm)', 'Temp. Máx. (C)', 'Temp. Mín. (C)', 'Mes', 'Temp_Diff', 'Indice_Climatico']]
 y = df['Produtividade (ton/ha)']
 
 # Normalização das features
@@ -71,6 +76,10 @@ print("\n✅ Avaliação do Modelo SVR:")
 print(f"MAE (Erro Absoluto Médio): {mae:.2f} ton/ha")
 print(f"MSE (Erro Quadrático Médio): {mse:.2f}")
 print(f"R² (Coeficiente de Determinação): {r2:.2f}")
+
+# Validação cruzada para robustez das métricas
+cv_r2 = cross_val_score(modelo, X_scaled, y, cv=5, scoring='r2')
+print(f"R² médio com validação cruzada (5-fold): {cv_r2.mean():.2f}")
 
 # ============================================================
 # 6. Gráfico: Produtividade Real vs Prevista
@@ -101,6 +110,8 @@ plt.tight_layout()
 plt.savefig('../tests/images/svr_residuos.png')
 plt.show()
 
+print(f"\n📊 Desvio padrão dos resíduos: {np.std(residuos):.2f} ton/ha")
+
 # ============================================================
 # 8. Maiores Erros Absolutos
 # ============================================================
@@ -119,7 +130,8 @@ df_metricas = pd.DataFrame([{
     'Modelo': 'SVR RBF',
     'MAE': mae,
     'MSE': mse,
-    'R2': r2
+    'R2': r2,
+    'R2_CrossVal': cv_r2.mean()
 }])
 df_metricas.to_csv('../tests/svr_metricas.csv', index=False)
-print("\n✅ Métricas do modelo SVR exportadas para ../tests/svr_metricas.csv")
+print("\n✅ Métricas exportadas para ../tests/svr_metricas.csv")
