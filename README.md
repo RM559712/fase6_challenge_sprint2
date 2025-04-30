@@ -58,7 +58,8 @@ Selecionamos as seguintes variáveis para previsão da produtividade:
 | Chuvas               | Essenciais para o desenvolvimento da lavoura     |
 | Mês                  | Consideramos a sazonalidade                      |
 
-> 📊 Ver análises em [`notebooks/analise_exploratoria.ipynb`](notebooks/analise_exploratoria.ipynb)
+> 📊 Ver análises em [`scripts/analise_exploratoria.ipynb`](scripts/analise_exploratoria.ipynb)
+
 
 ---
 
